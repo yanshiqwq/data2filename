@@ -36,12 +36,13 @@ echo [INFO] 正在合并文件...
 setlocal enabledelayedexpansion
 for /f "delims=_ tokens=3" %%i in ('dir /b /od /on /oe "%~1\*."') do (
 	set FILEDATA=%%i
-	set FILEDATA=!FILEDATA:-=/!
-	echo !FILEDATA! >> %~dp1file%RAND%.tmp
+	echo !FILEDATA! >> %~dp1fileraw%RAND%.tmp
 )
 endlocal
 
 echo [INFO] 合并完成!正在解码文件...
+sed -e "s/-/\//g" "%~dp1fileraw%RAND%.tmp" > "%~dp1file%RAND%.tmp"
+del /f /q %~dp1fileraw%RAND%.tmp >nul
 basenc -di --base64 %~dp1file%RAND%.tmp > %~dp1%FILENAME%
 del /f /q %~dp1file%RAND%.tmp >nul
 
