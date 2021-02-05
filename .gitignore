@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+
+*.log
+*.tmp
+*.cache
+*.exe
+
+testfiles/
+releases/
+dist/
