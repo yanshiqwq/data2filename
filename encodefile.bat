@@ -1,22 +1,30 @@
 @echo off
 echo.
-echo         %~nx0 v1.1 By 延时qwq https://space.bilibili.com/431304449
+echo 	%~nx0 v1.2 By 延时qwq 
 echo.
-echo 生成速度:	约40KB/s
-echo 生成数量:	约21文件/KB
-if "%~1" == "" echo 用法: %~nx0 待加密的文件 & goto :EOF
+echo ^<BiliBili^>	https://space.bilibili.com/431304449
+echo ^<Github^>	https://github.com/Yanshiqwq/data2filename
+echo 生成速度:	约78KB/s
+echo 生成数量:	约5文件/KB
+if "%~1" == "" (
+	echo 用法:		%~nx0 待加密的文件
+	pause >nul
+	goto :EOF
+)
 echo 文件名称:	%~nx1
 set /a GB=%~z1/1024/1024/1024
 set /a MB=%~z1/1024/1024%%1024
 set /a KB=%~z1/1024%%1024
 echo 文件大小:	%GB%GB %MB%MB %KB%KB
+set /a FILESCOUNT=%~z1/1024*5
+echo 生成文件:	%FILESCOUNT%个
 set /a FILESIZE=%~z1/1024
-set /a COMPLETESEC=%FILESIZE%/40%%60
-set /a COMPLETEMIN=%FILESIZE%/40/60%%60
-set /a COMPLETEHOUR=%FILESIZE%/40/3600%%60
+set /a COMPLETESEC=%FILESIZE%/78%%60
+set /a COMPLETEMIN=%FILESIZE%/78/60%%60
+set /a COMPLETEHOUR=%FILESIZE%/78/3600%%60
 echo 约需时间:	%COMPLETEHOUR%时 %COMPLETEMIN%分 %COMPLETESEC%秒
 set RAND=%RANDOM%
-base32 "%~1" > "%~dp1file%RAND%.tmp"
+basenc --base64 -w240 "%~1" > "%~dp1file%RAND%.tmp"
 set OUTFILE=%~nx1_encode
 set OUTFILE=%OUTFILE: =_%
 mkdir "%~dp1%OUTFILE%" >nul
