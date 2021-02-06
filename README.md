@@ -12,14 +12,23 @@
 
 所以不要想着把这堆文件存在网盘里了哦.而且,转换速度40KB/s警告(
 
-## [最新] v1.2.1 版本日志
+## [最新] v1.2.2 版本日志
+
+\-&ensp;修改base64引擎为msys64的base64.exe  
+\+ 编码速度113KB/s->170KB/s  
+\+ 解码速度204KB/s->331KB/s  
+\+ 修复了MD5校验错误的BUG  
+\+ 修复了文件解码错误导致文件损坏的BUG  
+\+ 优化速度及进度显示  
+
+### v1.2.1 版本日志
 
 \-&ensp;修改字符串替换引擎为msys64的sed.exe  
 \+ 编码速度78KB/s->113KB/s  
 
 ### v1.2 版本日志
 
-\-&ensp;修改base64引擎为msys64的base64.exe  
+\-&ensp;修改base64引擎为msys64的basenc.exe  
 \+ 编码速度40KB/s->78KB/s  
 \+ 解码速度79KB/s->204KB/s  
 \+ 生成数量21F/KB->5F/KB
@@ -29,7 +38,7 @@
 
 ### v1.1 版本日志
 
-\-&ensp;修改base64引擎为msys64的basenc.exe  
+\-&ensp;修改base64引擎为msys64的base64.exe  
 \-&ensp;修改index文件、filename文件、hash文件的后缀名为.encode  
 \+ 支持64MB以上的文件  
 \+ 编码速度33KB/s->40KB/s  
