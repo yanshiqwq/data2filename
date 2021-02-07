@@ -5,7 +5,9 @@ Thumbs.db
 *.tmp
 *.cache
 *.exe
+*.dll
 
 testfiles/
 releases/
 dist/
+bin/

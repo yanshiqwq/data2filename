@@ -10,6 +10,9 @@ if "%~1" == "" (
 	pause
 	goto :EOF
 )
+if not exist "%~1"/ (
+	echo [ERROR] 只能解密文件夹.
+)
 set RAND=%RANDOM%
 for /f %%i in ('where /r "%~1" index_*') do (set INDEXFILE=%%~ni)
 for /f %%i in ('where /r "%~1" filename_*') do (set NAMEFILE=%%~ni)
@@ -41,10 +44,15 @@ set /a COMPLETEHOUR=%FILESIZE_%/331/3600
 echo 约需时间:	%COMPLETEHOUR%时 %COMPLETEMIN%分 %COMPLETESEC%秒
 
 echo [INFO] 正在合并文件...
-setlocal enabledelayedexpansion
+set COUNT=0
 for /f "delims=_ tokens=3" %%i in ('dir /b /od /on /oe "%~1\*."') do (
+	setlocal enabledelayedexpansion
 	set FILEDATA=%%i
 	echo !FILEDATA! >> %~dp1fileraw%RAND%.tmp
+	set /a PER=!COUNT!%%596
+	if "!PER!" == "0" echo [INFO] 已完成!COUNT!/%FILESCOUNT%
+	endlocal
+	set /a COUNT+=1
 )
 endlocal
 
