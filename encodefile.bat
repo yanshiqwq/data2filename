@@ -1,6 +1,6 @@
 @echo off
 echo.
-echo 	%~nx0 v1.2.2 By —” ±qwq 
+echo 	%~nx0 v1.2.3 By —” ±qwq 
 echo.
 echo BiliBili:	https://space.bilibili.com/431304449
 echo Github:		https://github.com/Yanshiqwq/data2filename
