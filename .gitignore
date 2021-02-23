@@ -4,8 +4,6 @@ Thumbs.db
 *.log
 *.tmp
 *.cache
-*.exe
-*.dll
 
 testfiles/
 releases/
